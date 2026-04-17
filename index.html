@@ -4,92 +4,203 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Calicantus OMS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
   <script src="https://cdn.bigcommerce.com/jssdk/bc-sdk.js"></script>
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --orange: #f47920;
+      --orange-dark: #d96510;
+      --bg: #1a1d21;
+      --bg-card: #22262b;
+      --border: #2e3338;
+      --text: #ffffff;
+      --text-muted: #8b9099;
+    }
 
     body {
       min-height: 100vh;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      background-color: #0d1117;
-      font-family: 'Segoe UI', Arial, sans-serif;
-      color: #ffffff;
+      background-color: var(--bg);
+      font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+      color: var(--text);
+      padding: 24px;
+    }
+
+    .wrapper {
+      width: 100%;
+      max-width: 520px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .accent-bar {
+      height: 4px;
+      background: var(--orange);
+      border-radius: 4px 4px 0 0;
     }
 
     .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-top: none;
+      border-radius: 0 0 12px 12px;
+      padding: 48px 40px 40px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 32px;
-      padding: 56px 48px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 16px;
-      max-width: 480px;
-      width: 90%;
+      gap: 28px;
       text-align: center;
     }
 
-    .logo {
-      height: 48px;
-      width: auto;
+    .logo-link {
+      display: inline-block;
+      line-height: 0;
     }
 
-    .divider {
-      width: 48px;
-      height: 2px;
-      background: linear-gradient(90deg, #e8a020, #f0c060);
-      border-radius: 2px;
+    .logo {
+      height: 40px;
+      width: auto;
+      transition: opacity 0.2s;
+    }
+
+    .logo-link:hover .logo {
+      opacity: 0.8;
+    }
+
+    .separator {
+      width: 100%;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .text-block {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--orange);
     }
 
     h1 {
-      font-size: 1.6rem;
-      font-weight: 600;
-      letter-spacing: 0.01em;
-      color: #ffffff;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text);
       line-height: 1.3;
+      letter-spacing: -0.01em;
     }
 
     p {
-      font-size: 0.95rem;
-      color: rgba(255,255,255,0.55);
-      line-height: 1.6;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      font-weight: 300;
     }
 
     .btn {
-      display: inline-block;
-      padding: 14px 36px;
-      background: linear-gradient(135deg, #e8a020, #f0c060);
-      color: #0d1117;
-      font-size: 1rem;
-      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 32px;
+      background-color: var(--orange);
+      color: #ffffff;
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
       text-decoration: none;
-      border-radius: 8px;
-      letter-spacing: 0.02em;
-      transition: opacity 0.2s, transform 0.2s;
+      border-radius: 6px;
+      transition: background-color 0.18s ease, transform 0.15s ease;
+      margin-top: 4px;
     }
 
     .btn:hover {
-      opacity: 0.9;
+      background-color: var(--orange-dark);
       transform: translateY(-1px);
     }
 
     .btn:active {
       transform: translateY(0);
     }
+
+    .btn svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+
+    .footer {
+      margin-top: 20px;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      opacity: 0.5;
+      text-align: center;
+    }
+
+    .footer a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
-  <div class="card">
-    <img class="logo" src="logo.png" alt="Calicantus" />
-    <div class="divider"></div>
-    <h1>Order Management System</h1>
-    <p>Manage your orders, inventory and fulfilment across all channels — all in one place.</p>
-    <a class="btn" href="https://calicant.us/oms.html" target="_blank">
-      Open OMS →
-    </a>
+
+  <div class="wrapper">
+    <div class="accent-bar"></div>
+    <div class="card">
+
+      <a class="logo-link" href="https://calicant.us/oms.html" target="_blank">
+        <img class="logo" src="logo.png" alt="Calicantus" />
+      </a>
+
+      <div class="separator"></div>
+
+      <div class="text-block">
+        <div class="label">BigCommerce Integration</div>
+        <h1>Order Management System</h1>
+        <p>
+          Manage your orders, inventory and fulfilment across all your sales channels
+          from a single platform. For more information or to get in touch with us,
+          click the button below and fill in the contact form.
+        </p>
+      </div>
+
+      <a class="btn" href="https://calicant.us/oms.html" target="_blank">
+        More Info and Contact
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+          <polyline points="15 3 21 3 21 9"/>
+          <line x1="10" y1="14" x2="21" y2="3"/>
+        </svg>
+      </a>
+
+    </div>
+  </div>
+
+  <div class="footer">
+    <a href="https://calicant.us" target="_blank">calicant.us</a>
   </div>
 
   <script>
