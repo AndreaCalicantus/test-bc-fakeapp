@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calicantus OMS</title>
+  <script src="https://cdn.bigcommerce.com/jssdk/bc-sdk.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #0d1117;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      color: #ffffff;
+    }
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+      padding: 56px 48px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      max-width: 480px;
+      width: 90%;
+      text-align: center;
+    }
+
+    .logo {
+      height: 48px;
+      width: auto;
+    }
+
+    .divider {
+      width: 48px;
+      height: 2px;
+      background: linear-gradient(90deg, #e8a020, #f0c060);
+      border-radius: 2px;
+    }
+
+    h1 {
+      font-size: 1.6rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      color: #ffffff;
+      line-height: 1.3;
+    }
+
+    p {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.6;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 36px;
+      background: linear-gradient(135deg, #e8a020, #f0c060);
+      color: #0d1117;
+      font-size: 1rem;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 8px;
+      letter-spacing: 0.02em;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+
+    .btn:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+
+    .btn:active {
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <img class="logo" src="logo.png" alt="Calicantus" />
+    <div class="divider"></div>
+    <h1>Order Management System</h1>
+    <p>Manage your orders, inventory and fulfilment across all channels — all in one place.</p>
+    <a class="btn" href="https://calicant.us/oms.html" target="_blank">
+      Open OMS →
+    </a>
+  </div>
+
+  <script>
+    window.onload = function () {
+      if (typeof Bigcommerce !== 'undefined') {
+        Bigcommerce.init();
+      }
+    };
+  </script>
+</body>
+</html>
